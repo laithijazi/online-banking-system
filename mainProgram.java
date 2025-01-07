@@ -50,6 +50,12 @@ public class mainProgram{
                             System.out.println("Logged out successfully!");
                             break;
                         }
+
+                        Account account = bank.getUserAccounts().get(loggedInUser.getUserId());
+                        if(account == null){
+                            System.out.println("No account found.");
+                            break;
+                        }
                     }
                 }
                 else{
