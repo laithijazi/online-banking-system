@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class mainProgram{
     public static void main(String args[]){
         bankSystem bank = new bankSystem();
@@ -6,5 +8,32 @@ public class mainProgram{
 
         bank.createUser("64220068", "Hassan Ghezzaoui", "hassan.ghezzaoui@gmail.com", "53215321");
         bank.createAccount("2", "64220068", 300);
+
+        while(true){
+            System.out.println("Main Menu");
+            System.out.println("1. Login");
+            System.out.println("2. Exit");
+            System.out.println("Choose an option: ");
+
+            Scanner in = new Scanner(System.in);
+            int mainChoice = in.nextInt();
+
+            if(mainChoice == 2){
+                System.out.println("Thank you for Using our Online Banking System!");
+                break;
+            }
+
+            else if(mainChoice == 1){
+                System.out.println("Enter your user id: ");
+                String userId = in.nextLine();
+                System.out.println("Enter your password: ");
+                String password = in.nextLine();
+            }
+
+            else{
+                System.out.println("Invalid option.");
+                System.out.println("Try again!");
+            }
+        }
     }
 }
