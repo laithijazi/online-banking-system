@@ -32,4 +32,15 @@ public class Account{
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public void deposit(double depositAmount){
+        if(depositAmount <= 0){
+            System.out.println("Deposit amount must be positive.");
+        }
+        else{
+            balance += depositAmount;
+            System.out.println(depositAmount + " has been deposited to your account successfully!");
+            System.out.println("Your new balance is " + balance);
+        }
+    }
 }
