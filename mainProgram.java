@@ -67,6 +67,12 @@ public class mainProgram{
                                     double depositAmount = in.nextDouble();
                                     account.deposit(depositAmount);
                                     break;
+                                
+                                case 3:
+                                    System.out.println("Enter amount to withdraw: ");
+                                    double withdrawAmount = in.nextDouble();
+                                    account.withdraw(withdrawAmount);
+                                    break;
                             }
                         }
                     }
