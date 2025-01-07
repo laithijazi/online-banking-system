@@ -43,4 +43,18 @@ public class Account{
             System.out.println("Your new balance is " + balance);
         }
     }
+
+    public void withdraw(double withdrawAmount){
+        if(withdrawAmount <= 0){
+            System.out.println("Withdraw amount must be positive");
+        }
+        else if(withdrawAmount > balance){
+            System.out.println("Insufficient balance.");
+        }
+        else{
+            balance -= withdrawAmount;
+            System.out.println(withdrawAmount + " has been withdrawn from your account successfully!");
+            System.out.println("Your new balance is " + balance);
+        }
+    }
 }
