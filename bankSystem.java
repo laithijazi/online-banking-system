@@ -44,7 +44,13 @@ public class bankSystem{
     public User login(String userId, String password){
         if(users.containsKey(userId)){
             User user = users.get(userId);
-            return user;
+            if(user.authenticate(password)){
+                return user;
+            }
+            else{
+                System.out.println("Wrong password.");
+                return null;
+            }
         }
         else{
             System.out.println("User not found.");
