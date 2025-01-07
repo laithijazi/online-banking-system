@@ -29,9 +29,28 @@ public class mainProgram{
                 System.out.println("Enter your password: ");
                 String password = in.nextLine();
                 User loggedInUser = bank.login(userId, password);
+                
                 if(loggedInUser != null){
                     System.out.println("Logged in successfully!");
                     System.out.println("Welcome, " + loggedInUser.getName());
+
+                    while(true){
+                        System.out.println("User Menu");
+                        System.out.println("1. Check Balance");
+                        System.out.println("2. Deposit");
+                        System.out.println("3. Withdraw");
+                        System.out.println("4. Transfer");
+                        System.out.println("5. View Transactions");
+                        System.out.println("6. Logout");
+                        System.out.println("Choose an option: ");
+
+                        int userChoice = in.nextInt();
+
+                        if(userChoice == 6){
+                            System.out.println("Logged out successfully!");
+                            break;
+                        }
+                    }
                 }
                 else{
                     System.out.println("Login failed.");
