@@ -40,4 +40,15 @@ public class bankSystem{
             System.out.println("Account has been created.");
         }
     }
+
+    public User login(String userId, String password){
+        if(users.containsKey(userId)){
+            User user = users.get(userId);
+            return user;
+        }
+        else{
+            System.out.println("User not found.");
+            return null;
+        }
+    }
 }
