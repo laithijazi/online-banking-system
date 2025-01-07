@@ -56,6 +56,13 @@ public class mainProgram{
                             System.out.println("No account found.");
                             break;
                         }
+                        else{
+                            switch(userChoice){
+                                case 1:
+                                System.out.println("Balance = " + account.getBalance());
+                                break;
+                            }
+                        }
                     }
                 }
                 else{
