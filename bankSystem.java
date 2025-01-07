@@ -30,14 +30,14 @@ public class bankSystem{
         if(accounts.containsKey(accountNumber)){
             System.out.println("Account already exists.");
         }
-        else if(users.containsKey(userId)){
+        else if(!users.containsKey(userId)){
+            System.out.println("User not found.");
+        }
+        else{
             Account account = new Account(accountNumber, userId, initialBalance);
             accounts.put(accountNumber, account);
             userAccounts.put(userId, account);
             System.out.println("Account has been created.");
-        }
-        else{
-            System.out.println("User not found.");
         }
     }
 }
