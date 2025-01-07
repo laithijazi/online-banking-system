@@ -28,7 +28,14 @@ public class mainProgram{
                 String userId = in.nextLine();
                 System.out.println("Enter your password: ");
                 String password = in.nextLine();
-                User user = bank.login(userId, password);
+                User loggedInUser = bank.login(userId, password);
+                if(loggedInUser != null){
+                    System.out.println("Logged in successfully!");
+                    System.out.println("Welcome, " + loggedInUser.getName());
+                }
+                else{
+                    System.out.println("Login failed.");
+                }
             }
 
             else{
