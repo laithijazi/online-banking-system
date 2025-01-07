@@ -25,4 +25,19 @@ public class bankSystem{
             System.out.println("User has been created for " + user.getName());
         }
     }
+
+    public void createAccount(String accountNumber, String userId, double initialBalance){
+        if(accounts.containsKey(accountNumber)){
+            System.out.println("Account already exists.");
+        }
+        else if(users.containsKey(userId)){
+            Account account = new Account(accountNumber, userId, initialBalance);
+            accounts.put(accountNumber, account);
+            userAccounts.put(userId, account);
+            System.out.println("Account has been created.");
+        }
+        else{
+            System.out.println("User not found.");
+        }
+    }
 }
