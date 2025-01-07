@@ -57,4 +57,16 @@ public class Account{
             System.out.println("Your new balance is " + balance);
         }
     }
+
+    public void transfer(bankSystem bank, double transferAmount, String recepientAccountNumber){
+        if(transferAmount <= 0){
+            System.out.println("Transfer amount must be positive");
+        }
+        Account recepientAccount = bank.getAccounts().get(recepientAccountNumber);
+        if(recepientAccount == null){
+            System.out.println("Recepient account not found");
+        }
+        recepientAccount.setBalance(recepientAccount.getBalance() + transferAmount);
+        System.out.println("Transferred successfully!");
+    }
 }
