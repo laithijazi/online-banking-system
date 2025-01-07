@@ -59,8 +59,14 @@ public class mainProgram{
                         else{
                             switch(userChoice){
                                 case 1:
-                                System.out.println("Balance = " + account.getBalance());
-                                break;
+                                    System.out.println("Balance = " + account.getBalance());
+                                    break;
+
+                                case 2:
+                                    System.out.println("Enter amount to deposit: ");
+                                    double depositAmount = in.nextDouble();
+                                    account.deposit(depositAmount);
+                                    break;
                             }
                         }
                     }
