@@ -57,6 +57,8 @@ public class Account{
             balance -= withdrawAmount;
             System.out.println(withdrawAmount + " has been withdrawn from your account successfully!");
             System.out.println("Your new balance is " + balance);
+            Transaction transaction = new Transaction("Withdraw", withdrawAmount, getAccountNumber());
+            transaction.logTransaction();
         }
     }
 
@@ -77,6 +79,10 @@ public class Account{
             recepientAccount.setBalance(recepientAccount.getBalance() + transferAmount);
             senderAccount.setBalance(senderAccount.getBalance() - transferAmount);
             System.out.println(transferAmount + " has been transferred from you account successfully");
+            Transaction senderTransaction = new Transaction("Transfer", transferAmount, senderAccountNumber);
+            senderTransaction.logTransaction();
+            Transaction recepientTransaction = new Transaction("Transfer", transferAmount, recepientAccountNumber);
+            recepientTransaction.logTransaction();
         }
     }
 }
