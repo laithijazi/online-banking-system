@@ -86,6 +86,10 @@ public class mainProgram{
                                 case 4:
                                     bank.viewAccounts();
                                     break;
+                                
+                                case 5:
+                                    bank.viewUsersAccounts();
+                                    break;
                             
                                 default:
                                     System.out.println("Invalid option.");

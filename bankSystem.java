@@ -72,4 +72,10 @@ public class bankSystem{
             System.out.println("Account: " + account);
         }
     }
+
+    public void viewUsersAccounts(){
+        for(Account account : userAccounts.values()){
+            System.out.println("Account: " + account);
+        }
+    }
 }
