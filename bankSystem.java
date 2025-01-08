@@ -58,12 +58,18 @@ public class bankSystem{
         }
     }
 
-    public void viewUsers(String userId){
+    public void viewUsers(String adminId){
         for(User user : users.values()){
-            if(userId.equalsIgnoreCase(user.getUserId())){
+            if(adminId.equalsIgnoreCase(user.getUserId())){
                 continue;
             }
             System.out.println("User: " + user);
+        }
+    }
+
+    public void viewAccounts(){
+        for(Account account : accounts.values()){
+            System.out.println("Account: " + account);
         }
     }
 }

@@ -82,6 +82,10 @@ public class mainProgram{
                                 case 3:
                                     bank.viewUsers(loggedInUser.getUserId());
                                     break;
+                                
+                                case 4:
+                                    bank.viewAccounts();
+                                    break;
                             
                                 default:
                                     System.out.println("Invalid option.");

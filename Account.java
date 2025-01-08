@@ -111,4 +111,9 @@ public class Account{
             System.out.println("Error in reading trasanctions file: " + e.getMessage());
         }
     }
+
+    @Override
+    public String toString(){
+        return "Account [accountNumber=" + accountNumber + ", userId=" + userId + ", balance=" + balance + "]";
+    }
 }
