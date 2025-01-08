@@ -22,38 +22,41 @@ public class mainProgram{
             int mainChoice = in.nextInt();
             in.nextLine();
 
-            if(mainChoice == 2){
-                System.out.println("Thank you for Using our Online Banking System!");
-                break;
-            }
-
-            else if(mainChoice == 1){
-                System.out.println("Enter your user id: ");
-                String id = in.nextLine();
-                System.out.println("Enter your password: ");
-                String password = in.nextLine();
-                User loggedInUser = bank.login(id, password);
+            switch(mainChoice){
+                case 1:
+                    System.out.println("Enter your user id: ");
+                    String id = in.nextLine();
+                    System.out.println("Enter your password: ");
+                    String password = in.nextLine();
+                    User loggedInUser = bank.login(id, password);
                 
-                if(loggedInUser != null){
-                    System.out.println("Logged in successfully!");
-                    System.out.println("Welcome, " + loggedInUser.getName());
+                    if(loggedInUser != null){
+                        System.out.println("Logged in successfully!");
+                        System.out.println("Welcome, " + loggedInUser.getName());
 
-                    if(loggedInUser.getName().equals("admin")){
-                        handleAdminMenu(bank, loggedInUser, in);
+                        if(loggedInUser.getName().equals("admin")){
+                            handleAdminMenu(bank, loggedInUser, in);
+                            break;
+                        }
+
+                        else{
+                            handleUserMenu(bank, loggedInUser, in);
+                            break;
+                        }
                     }
 
                     else{
-                        handleUserMenu(bank, loggedInUser, in);
+                        System.out.println("Login failed.");
+                        break;
                     }
-                }
-                
-                else{
-                    System.out.println("Login failed.");
-                }
-            }
-            else{
-                System.out.println("Invalid option.");
-                System.out.println("Try again!");
+                    
+                case 2:
+                    System.out.println("Thank you for Using our Online Banking System!");
+                    System.exit(0);
+                    
+                default:
+                    System.out.println("Invalid option.");
+                    System.out.println("Try again!");
             }
         }
     }
