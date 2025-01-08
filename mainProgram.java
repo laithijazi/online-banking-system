@@ -55,14 +55,24 @@ public class mainProgram{
                             }
                             else if(adminChoice == 1){
                                 System.out.println("Enter user id: ");
-                                String userId = in.nextLine();
+                                String newUserId = in.nextLine();
                                 System.out.println("Enter username: ");
-                                String userName = in.nextLine();
+                                String newUserName = in.nextLine();
                                 System.out.println("Enter user email: ");
-                                String userEmail = in.nextLine();
+                                String newUserEmail = in.nextLine();
                                 System.out.println("Enter user password: ");
-                                String userPassword = in.nextLine();
-                                bank.createUser(userId, userName, userEmail, userPassword);
+                                String newUserPassword = in.nextLine();
+                                bank.createUser(newUserId, newUserName, newUserEmail, newUserPassword);
+                            }
+                            else if(adminChoice == 2){
+                                System.out.println("Enter account number: ");
+                                String newAccountNumber = in.nextLine();
+                                System.out.println("Enter user id: ");
+                                String userId = in.nextLine();
+                                System.out.println("Enter initial balance: ");
+                                double InitialBalance = in.nextDouble();
+                                in.nextLine();
+                                bank.createAccount(newAccountNumber, userId, InitialBalance);
                             }
                         }
                     }
