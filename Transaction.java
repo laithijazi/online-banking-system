@@ -53,7 +53,7 @@ public class Transaction{
 
     public void logTransaction(){
         try{
-            FileWriter writer = new FileWriter("transactions_" + getAccountNumber() + ".txt");
+            FileWriter writer = new FileWriter("transactions_" + getAccountNumber() + ".txt", true);
             writer.write(toString() + "\n");
             writer.close();
         }
