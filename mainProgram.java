@@ -53,30 +53,32 @@ public class mainProgram{
                                 System.out.println("Logged out successfully!");
                                 break;
                             }
-                            else if(adminChoice == 1){
-                                System.out.println("Enter user id: ");
-                                String newUserId = in.nextLine();
-                                System.out.println("Enter username: ");
-                                String newUserName = in.nextLine();
-                                System.out.println("Enter user email: ");
-                                String newUserEmail = in.nextLine();
-                                System.out.println("Enter user password: ");
-                                String newUserPassword = in.nextLine();
-                                bank.createUser(newUserId, newUserName, newUserEmail, newUserPassword);
-                            }
-                            else if(adminChoice == 2){
-                                System.out.println("Enter account number: ");
-                                String newAccountNumber = in.nextLine();
-                                System.out.println("Enter user id: ");
-                                String userId = in.nextLine();
-                                System.out.println("Enter initial balance: ");
-                                double InitialBalance = in.nextDouble();
-                                in.nextLine();
-                                bank.createAccount(newAccountNumber, userId, InitialBalance);
-                            }
-                            else{
-                                System.out.println("Invalid option.");
-                                System.out.println("Try again!");
+
+                            switch(adminChoice){
+                                case 1:
+                                    System.out.println("Enter user id: ");
+                                    String newUserId = in.nextLine();
+                                    System.out.println("Enter username: ");
+                                    String newUserName = in.nextLine();
+                                    System.out.println("Enter user email: ");
+                                    String newUserEmail = in.nextLine();
+                                    System.out.println("Enter user password: ");
+                                    String newUserPassword = in.nextLine();
+                                    bank.createUser(newUserId, newUserName, newUserEmail, newUserPassword);
+                            
+                                case 2:
+                                    System.out.println("Enter account number: ");
+                                    String newAccountNumber = in.nextLine();
+                                    System.out.println("Enter user id: ");
+                                    String userId = in.nextLine();
+                                    System.out.println("Enter initial balance: ");
+                                    double InitialBalance = in.nextDouble();
+                                    in.nextLine();
+                                    bank.createAccount(newAccountNumber, userId, InitialBalance);
+                            
+                                default:
+                                    System.out.println("Invalid option.");
+                                    System.out.println("Try again!");
                             }
                         }
                     }
