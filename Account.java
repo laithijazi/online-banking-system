@@ -95,6 +95,7 @@ public class Account{
         try{
             File file = new File("transactions_" + getAccountNumber() + ".txt");
             if(file.exists()){
+                System.out.println("Trasanctions for account number " + getAccountNumber() + ":\n");
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String line;
                 while((line = reader.readLine()) != null){
