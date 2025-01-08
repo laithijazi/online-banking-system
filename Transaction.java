@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class Transaction{
@@ -47,5 +49,16 @@ public class Transaction{
 
     public String toString(){
         return "type: " + type + ", amount: " + amount + ", date: " + date;
+    }
+
+    public void logTransaction(){
+        try{
+            FileWriter writer = new FileWriter("transactions_" + account.getAccountNumber() + ".txt");
+            writer.write(toString() + "\n");
+            writer.close();
+        }
+        catch(IOException e){
+            System.out.println("Error in writing transaction to file: " + e.getMessage());
+        }
     }
 }
