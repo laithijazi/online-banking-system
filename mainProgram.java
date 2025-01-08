@@ -74,6 +74,10 @@ public class mainProgram{
                                 in.nextLine();
                                 bank.createAccount(newAccountNumber, userId, InitialBalance);
                             }
+                            else{
+                                System.out.println("Invalid option.");
+                                System.out.println("Try again!");
+                            }
                         }
                     }
 
