@@ -39,68 +39,7 @@ public class mainProgram{
                     System.out.println("Welcome, " + loggedInUser.getName());
 
                     if(loggedInUser.getName().equals("admin")){
-                        while(true){
-                            System.out.println("Admin Menu");
-                            System.out.println("1. Create User");
-                            System.out.println("2. Create Account");
-                            System.out.println("3. View Users");
-                            System.out.println("4. View Accounts");
-                            System.out.println("5. View Users Accounts");
-                            System.out.println("6. View All Transactions");
-                            System.out.println("7. Logout");
-                            System.out.println("Choose an option: ");
-
-                            int adminChoice = in.nextInt();
-                            in.nextLine();
-
-                            if(adminChoice == 7){
-                                System.out.println("Logged out successfully!");
-                                break;
-                            }
-
-                            switch(adminChoice){
-                                case 1:
-                                    System.out.println("Enter user id: ");
-                                    String newUserId = in.nextLine();
-                                    System.out.println("Enter username: ");
-                                    String newUserName = in.nextLine();
-                                    System.out.println("Enter user email: ");
-                                    String newUserEmail = in.nextLine();
-                                    System.out.println("Enter user password: ");
-                                    String newUserPassword = in.nextLine();
-                                    bank.createUser(newUserId, newUserName, newUserEmail, newUserPassword);
-                            
-                                case 2:
-                                    System.out.println("Enter account number: ");
-                                    String newAccountNumber = in.nextLine();
-                                    System.out.println("Enter user id: ");
-                                    String userId = in.nextLine();
-                                    System.out.println("Enter initial balance: ");
-                                    double InitialBalance = in.nextDouble();
-                                    in.nextLine();
-                                    bank.createAccount(newAccountNumber, userId, InitialBalance);
-                                
-                                case 3:
-                                    bank.viewUsers(loggedInUser.getUserId());
-                                    break;
-                                
-                                case 4:
-                                    bank.viewAccounts();
-                                    break;
-                                
-                                case 5:
-                                    bank.viewUsersAccounts();
-                                    break;
-
-                                case 6:
-                                    bank.viewAllTrasnactions();
-                                    break;
-                            
-                                default:
-                                    System.out.println("Invalid option.");
-                                    System.out.println("Try again!");
-                            }
-                        }
+                        handleAdminMenu(bank, loggedInUser, in);
                     }
 
                     else{
@@ -169,6 +108,73 @@ public class mainProgram{
             else{
                 System.out.println("Invalid option.");
                 System.out.println("Try again!");
+            }
+        }
+    }
+
+    public static void handleAdminMenu(bankSystem bank, User admin, Scanner in){
+        while(true){
+            System.out.println("Admin Menu");
+            System.out.println("1. Create User");
+            System.out.println("2. Create Account");
+            System.out.println("3. View Users");
+            System.out.println("4. View Accounts");
+            System.out.println("5. View Users Accounts");
+            System.out.println("6. View All Transactions");
+            System.out.println("7. Logout");
+            System.out.println("Choose an option: ");
+
+            int adminChoice = in.nextInt();
+            in.nextLine();
+
+            if(adminChoice == 7){
+                System.out.println("Logged out successfully!");
+                break;
+            }
+
+            switch(adminChoice){
+                case 1:
+                    System.out.println("Enter user id: ");
+                    String newUserId = in.nextLine();
+                    System.out.println("Enter username: ");
+                    String newUserName = in.nextLine();
+                    System.out.println("Enter user email: ");
+                    String newUserEmail = in.nextLine();
+                    System.out.println("Enter user password: ");
+                    String newUserPassword = in.nextLine();
+                    bank.createUser(newUserId, newUserName, newUserEmail, newUserPassword);
+                    break;
+            
+                case 2:
+                    System.out.println("Enter account number: ");
+                    String newAccountNumber = in.nextLine();
+                    System.out.println("Enter user id: ");
+                    String userId = in.nextLine();
+                    System.out.println("Enter initial balance: ");
+                    double InitialBalance = in.nextDouble();
+                    in.nextLine();
+                    bank.createAccount(newAccountNumber, userId, InitialBalance);
+                    break;
+                
+                case 3:
+                    bank.viewUsers(admin.getUserId());
+                    break;
+                
+                case 4:
+                    bank.viewAccounts();
+                    break;
+                
+                case 5:
+                    bank.viewUsersAccounts();
+                    break;
+
+                case 6:
+                    bank.viewAllTrasnactions();
+                    break;
+            
+                default:
+                    System.out.println("Invalid option.");
+                    System.out.println("Try again!");
             }
         }
     }
