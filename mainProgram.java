@@ -86,6 +86,10 @@ public class mainProgram{
                                     in.nextLine();
                                     account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
                                     break;
+
+                                case 5:
+                                    account.viewTransactions();
+                                    break;
                             }
                         }
                     }
