@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class mainProgram{
     public static void main(String args[]){
         bankSystem bank = new bankSystem();
+
+        bank.createUser("111", "admin", "admin@email.com","root");
+
         bank.createUser("64220039", "Laith Hijazi", "laith.hijazi@icloud.com", "123123");
         bank.createAccount("1", "64220039", 500);
 
@@ -26,39 +29,57 @@ public class mainProgram{
 
             else if(mainChoice == 1){
                 System.out.println("Enter your user id: ");
-                String userId = in.nextLine();
+                String id = in.nextLine();
                 System.out.println("Enter your password: ");
                 String password = in.nextLine();
-                User loggedInUser = bank.login(userId, password);
+                User loggedInUser = bank.login(id, password);
                 
                 if(loggedInUser != null){
                     System.out.println("Logged in successfully!");
                     System.out.println("Welcome, " + loggedInUser.getName());
 
-                    while(true){
-                        System.out.println("User Menu");
-                        System.out.println("1. Check Balance");
-                        System.out.println("2. Deposit");
-                        System.out.println("3. Withdraw");
-                        System.out.println("4. Transfer");
-                        System.out.println("5. View Transactions");
-                        System.out.println("6. Logout");
-                        System.out.println("Choose an option: ");
+                    if(loggedInUser.getName().equals("admin")){
+                        while(true){
+                            System.out.println("Admin Menu");
+                            System.out.println("1. Create User");
+                            System.out.println("2. Create Account");
+                            System.out.println("3. Logout");
+                            System.out.println("Choose an option: ");
 
-                        int userChoice = in.nextInt();
-                        in.nextLine();
+                            int adminChoice = in.nextInt();
+                            in.nextLine();
 
-                        if(userChoice == 6){
-                            System.out.println("Logged out successfully!");
-                            break;
+                            if(adminChoice == 3){
+                                System.out.println("Logged out successfully!");
+                                break;
+                            }
                         }
+                    }
 
-                        Account account = bank.getUserAccounts().get(loggedInUser.getUserId());
-                        if(account == null){
-                            System.out.println("No account found.");
-                            break;
-                        }
-                        else{
+                    else{
+                        while(true){
+                            System.out.println("User Menu");
+                            System.out.println("1. Check Balance");
+                            System.out.println("2. Deposit");
+                            System.out.println("3. Withdraw");
+                            System.out.println("4. Transfer");
+                            System.out.println("5. View Transactions");
+                            System.out.println("6. Logout");
+                            System.out.println("Choose an option: ");
+
+                            int userChoice = in.nextInt();
+                            in.nextLine();
+
+                            if(userChoice == 6){
+                                System.out.println("Logged out successfully!");
+                                break;
+                            }
+
+                            Account account = bank.getUserAccounts().get(loggedInUser.getUserId());
+                            if(account == null){
+                                System.out.println("No account found.");
+                                break;
+                            }
                             switch(userChoice){
                                 case 1:
                                     System.out.println("Balance = " + account.getBalance());
@@ -70,14 +91,14 @@ public class mainProgram{
                                     in.nextLine();
                                     account.deposit(depositAmount);
                                     break;
-                                
+                                    
                                 case 3:
                                     System.out.println("Enter amount to withdraw: ");
                                     double withdrawAmount = in.nextDouble();
                                     in.nextLine();
                                     account.withdraw(withdrawAmount);
                                     break;
-                                
+                                    
                                 case 4:
                                     System.out.println("Enter recepient account number: ");
                                     String recepientAccountNumber = in.nextLine();
@@ -85,7 +106,7 @@ public class mainProgram{
                                     double transferAmount = in.nextDouble();
                                     in.nextLine();
                                     account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
-                                    break;
+                                        break;
 
                                 case 5:
                                     account.viewTransactions();
@@ -98,7 +119,6 @@ public class mainProgram{
                     System.out.println("Login failed.");
                 }
             }
-
             else{
                 System.out.println("Invalid option.");
                 System.out.println("Try again!");
