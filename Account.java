@@ -41,6 +41,8 @@ public class Account{
             balance += depositAmount;
             System.out.println(depositAmount + " has been deposited to your account successfully!");
             System.out.println("Your new balance is " + balance);
+            Transaction transaction = new Transaction("Desposit", depositAmount, getAccountNumber());
+            transaction.logTransaction();
         }
     }
 

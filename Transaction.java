@@ -9,13 +9,13 @@ public class Transaction{
     private String type;
     private double amount;
     private LocalDateTime date;
-    private Account account;
+    private String accountNumber;
 
-    public Transaction(String type, double amount, Account account) {
+    public Transaction(String type, double amount, String accountNumber) {
         this.type = type;
         this.amount = amount;
         this.date = LocalDateTime.now();
-        this.account = account;
+        this.accountNumber = accountNumber;
     }
 
     public String getType() {
@@ -42,12 +42,12 @@ public class Transaction{
         this.date = date;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public String toString(){
@@ -56,7 +56,7 @@ public class Transaction{
 
     public void logTransaction(){
         try{
-            FileWriter writer = new FileWriter("transactions_" + account.getAccountNumber() + ".txt");
+            FileWriter writer = new FileWriter("transactions_" + getAccountNumber() + ".txt");
             writer.write(toString() + "\n");
             writer.close();
         }
@@ -67,7 +67,7 @@ public class Transaction{
 
     public void viewTransactions(){
         try{
-            File file = new File("transactions_" + account.getAccountNumber() + ".txt");
+            File file = new File("transactions_" + getAccountNumber() + ".txt");
             if(file.exists()){
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String line;
