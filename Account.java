@@ -58,15 +58,23 @@ public class Account{
         }
     }
 
-    public void transfer(bankSystem bank, double transferAmount, String recepientAccountNumber){
-        if(transferAmount <= 0){
-            System.out.println("Transfer amount must be positive");
-        }
+    public void transfer(bankSystem bank, double transferAmount, String senderAccountNumber, String recepientAccountNumber){
         Account recepientAccount = bank.getAccounts().get(recepientAccountNumber);
+        Account senderAccount = bank.getAccounts().get(senderAccountNumber);
         if(recepientAccount == null){
             System.out.println("Recepient account not found");
         }
-        recepientAccount.setBalance(recepientAccount.getBalance() + transferAmount);
-        System.out.println("Transferred successfully!");
+        else if(transferAmount <= 0){
+            System.out.println("Transfer amount must be positive");
+        }
+        
+        else if(transferAmount > senderAccount.getBalance()){
+            System.out.println("Insufficient balance.");
+        }
+        else{
+            recepientAccount.setBalance(recepientAccount.getBalance() + transferAmount);
+            senderAccount.setBalance(senderAccount.getBalance() - transferAmount);
+            System.out.println(transferAmount + " has been transferred from you account successfully");
+        }
     }
 }
