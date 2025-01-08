@@ -17,6 +17,7 @@ public class mainProgram{
 
             Scanner in = new Scanner(System.in);
             int mainChoice = in.nextInt();
+            in.nextLine();
 
             if(mainChoice == 2){
                 System.out.println("Thank you for Using our Online Banking System!");
@@ -45,6 +46,7 @@ public class mainProgram{
                         System.out.println("Choose an option: ");
 
                         int userChoice = in.nextInt();
+                        in.nextLine();
 
                         if(userChoice == 6){
                             System.out.println("Logged out successfully!");
@@ -65,22 +67,25 @@ public class mainProgram{
                                 case 2:
                                     System.out.println("Enter amount to deposit: ");
                                     double depositAmount = in.nextDouble();
+                                    in.nextLine();
                                     account.deposit(depositAmount);
                                     break;
                                 
                                 case 3:
                                     System.out.println("Enter amount to withdraw: ");
                                     double withdrawAmount = in.nextDouble();
+                                    in.nextLine();
                                     account.withdraw(withdrawAmount);
                                     break;
                                 
                                 case 4:
-                                System.out.println("Enter recepient account number: ");
-                                String recepientAccountNumber = in.nextLine();
-                                System.out.println("Enter amount to transfer: ");
-                                double transferAmount = in.nextDouble();
-                                account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
-                                break;
+                                    System.out.println("Enter recepient account number: ");
+                                    String recepientAccountNumber = in.nextLine();
+                                    System.out.println("Enter amount to transfer: ");
+                                    double transferAmount = in.nextDouble();
+                                    in.nextLine();
+                                    account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
+                                    break;
                             }
                         }
                     }
