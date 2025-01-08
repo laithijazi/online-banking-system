@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class mainProgram{
@@ -13,50 +14,56 @@ public class mainProgram{
         bank.createAccount("2", "64220068", 300);
 
         while(true){
-            System.out.println("Main Menu");
-            System.out.println("1. Login");
-            System.out.println("2. Exit");
-            System.out.println("Choose an option: ");
+            try{
+                System.out.println("Main Menu");
+                System.out.println("1. Login");
+                System.out.println("2. Exit");
+                System.out.println("Choose an option: ");
 
-            Scanner in = new Scanner(System.in);
-            int mainChoice = in.nextInt();
-            in.nextLine();
+                Scanner in = new Scanner(System.in);
+                int mainChoice = in.nextInt();
+                in.nextLine();
 
-            switch(mainChoice){
-                case 1:
-                    System.out.println("Enter your user id: ");
-                    String id = in.nextLine();
-                    System.out.println("Enter your password: ");
-                    String password = in.nextLine();
-                    User loggedInUser = bank.login(id, password);
+                switch(mainChoice){
+                    case 1:
+                        System.out.println("Enter your user id: ");
+                        String id = in.nextLine();
+                        System.out.println("Enter your password: ");
+                        String password = in.nextLine();
+                        User loggedInUser = bank.login(id, password);
                 
-                    if(loggedInUser != null){
-                        System.out.println("Logged in successfully!");
-                        System.out.println("Welcome, " + loggedInUser.getName());
+                        if(loggedInUser != null){
+                            System.out.println("Logged in successfully!");
+                            System.out.println("Welcome, " + loggedInUser.getName());
 
-                        if(loggedInUser.getName().equals("admin")){
-                            handleAdminMenu(bank, loggedInUser, in);
-                            break;
+                            if(loggedInUser.getName().equals("admin")){
+                                handleAdminMenu(bank, loggedInUser, in);
+                                break;
+                            }
+
+                            else{
+                                handleUserMenu(bank, loggedInUser, in);
+                                break;
+                            }
                         }
 
                         else{
-                            handleUserMenu(bank, loggedInUser, in);
+                            System.out.println("Login failed.");
                             break;
                         }
-                    }
-
-                    else{
-                        System.out.println("Login failed.");
-                        break;
-                    }
                     
-                case 2:
-                    System.out.println("Thank you for Using our Online Banking System!");
-                    System.exit(0);
+                    case 2:
+                        System.out.println("Thank you for Using our Online Banking System!");
+                        System.exit(0);
                     
-                default:
-                    System.out.println("Invalid option.");
-                    System.out.println("Try again!");
+                    default:
+                        System.out.println("Invalid option.");
+                        System.out.println("Try again!");
+                }
+            }
+            catch(InputMismatchException e){
+                System.out.println("Invalid input.");
+                System.out.println("Please enter a valid number.");
             }
         }
     }
