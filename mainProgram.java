@@ -73,6 +73,14 @@ public class mainProgram{
                                     double withdrawAmount = in.nextDouble();
                                     account.withdraw(withdrawAmount);
                                     break;
+                                
+                                case 4:
+                                System.out.println("Enter recepient account number: ");
+                                String recepientAccountNumber = in.nextLine();
+                                System.out.println("Enter amount to transfer: ");
+                                double transferAmount = in.nextDouble();
+                                account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
+                                break;
                             }
                         }
                     }
