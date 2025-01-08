@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -59,6 +62,26 @@ public class Transaction{
         }
         catch(IOException e){
             System.out.println("Error in writing transaction to file: " + e.getMessage());
+        }
+    }
+
+    public void viewTransactions(){
+        try{
+            File file = new File("transactions_" + account.getAccountNumber() + ".txt");
+            if(file.exists()){
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String line;
+                while((line = reader.readLine()) != null){
+                    System.out.println(line);
+                }
+                reader.close();
+            }
+            else{
+                System.out.println("No transactions found");
+            }
+        }
+        catch(IOException e){
+            System.out.println("Error in reading trasanctions file: " + e.getMessage());
         }
     }
 }
