@@ -53,6 +53,17 @@ public class mainProgram{
                                 System.out.println("Logged out successfully!");
                                 break;
                             }
+                            else if(adminChoice == 1){
+                                System.out.println("Enter user id: ");
+                                String userId = in.nextLine();
+                                System.out.println("Enter username: ");
+                                String userName = in.nextLine();
+                                System.out.println("Enter user email: ");
+                                String userEmail = in.nextLine();
+                                System.out.println("Enter user password: ");
+                                String userPassword = in.nextLine();
+                                bank.createUser(userId, userName, userEmail, userPassword);
+                            }
                         }
                     }
 
