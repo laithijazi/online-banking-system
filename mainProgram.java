@@ -11,7 +11,7 @@ public class mainProgram{
         bank.createAccount("1", "64220039", 500);
 
         bank.createUser("64220068", "Hassan Ghezzaoui", "hassan.ghezzaoui@gmail.com", "53215321");
-        bank.createAccount("2", "64220068", 300);
+        //bank.createAccount("2", "64220068", 300);
 
         while(true){
             try{
@@ -142,61 +142,70 @@ public class mainProgram{
 
     public static void handleUserMenu(bankSystem bank, User user, Scanner in){
         while(true){
-            System.out.println("User Menu");
-            System.out.println("1. Check Balance");
-            System.out.println("2. Deposit");
-            System.out.println("3. Withdraw");
-            System.out.println("4. Transfer");
-            System.out.println("5. View Transactions");
-            System.out.println("6. Logout");
-            System.out.println("Choose an option: ");
+            try{
+                System.out.println("User Menu");
+                System.out.println("1. Check Balance");
+                System.out.println("2. Deposit");
+                System.out.println("3. Withdraw");
+                System.out.println("4. Transfer");
+                System.out.println("5. View Transactions");
+                System.out.println("6. Logout");
+                System.out.println("Choose an option: ");
 
-            int userChoice = in.nextInt();
-            in.nextLine();
+                int userChoice = in.nextInt();
+                in.nextLine();
 
-            if(userChoice == 6){
-                System.out.println("Logged out successfully!");
-                break;
-            }
-
-            Account account = bank.getUserAccounts().get(user.getUserId());
-            if(account == null){
-                System.out.println("No account found.");
-                break;
-            }
-            switch(userChoice){
-                case 1:
-                    System.out.println("Balance = " + account.getBalance());
+                Account account = bank.getUserAccounts().get(user.getUserId());
+                if(account == null){
+                    System.out.println("No account found.");
                     break;
+                }
 
-                case 2:
-                    System.out.println("Enter amount to deposit: ");
-                    double depositAmount = in.nextDouble();
-                    in.nextLine();
-                    account.deposit(depositAmount);
-                    break;
+                switch(userChoice){
+                    case 1:
+                        System.out.println("Balance = " + account.getBalance());
+                        break;
+
+                    case 2:
+                        System.out.println("Enter amount to deposit: ");
+                        double depositAmount = in.nextDouble();
+                        in.nextLine();
+                        account.deposit(depositAmount);
+                        break;
                     
-                case 3:
-                    System.out.println("Enter amount to withdraw: ");
-                    double withdrawAmount = in.nextDouble();
-                    in.nextLine();
-                    account.withdraw(withdrawAmount);
-                    break;
+                    case 3:
+                        System.out.println("Enter amount to withdraw: ");
+                        double withdrawAmount = in.nextDouble();
+                        in.nextLine();
+                        account.withdraw(withdrawAmount);
+                        break;
                     
-                case 4:
-                    System.out.println("Enter recepient account number: ");
-                    String recepientAccountNumber = in.nextLine();
-                    System.out.println("Enter amount to transfer: ");
-                    double transferAmount = in.nextDouble();
-                    in.nextLine();
-                    account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
-                    break;
+                    case 4:
+                        System.out.println("Enter recepient account number: ");
+                        String recepientAccountNumber = in.nextLine();
+                        System.out.println("Enter amount to transfer: ");
+                        double transferAmount = in.nextDouble();
+                        in.nextLine();
+                        account.transfer(bank, transferAmount, account.getAccountNumber(), recepientAccountNumber);
+                        break;
 
-                case 5:
-                    account.viewTransactions();
-                    break;
+                    case 5:
+                        account.viewTransactions();
+                        break;
+                
+                    case 6:
+                        System.out.println("Logged out successfully!");
+                        break;
+
+                    default:
+                        System.out.println("Invalid option.");
+                        System.out.println("Try again!");
+                }
+            }
+            catch(InputMismatchException e){
+                System.out.println("Invalid input.");
+                System.out.println("Please enter a valid number.");
             }
         }
     }
-
 }
