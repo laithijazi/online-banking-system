@@ -44,5 +44,8 @@ public class Transaction{
     public void setAccount(Account account) {
         this.account = account;
     }
-    
+
+    public String toString(){
+        return "type: " + type + ", amount: " + amount + ", date: " + date;
+    }
 }
