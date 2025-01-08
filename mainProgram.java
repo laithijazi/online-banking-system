@@ -5,13 +5,20 @@ public class mainProgram{
     public static void main(String args[]){
         bankSystem bank = new bankSystem();
 
-        bank.createUser("111", "admin", "admin@email.com","root");
+        bank.createUser("1", "admin", "admin@email.com","admin");
 
         bank.createUser("64220039", "Laith Hijazi", "laith.hijazi@icloud.com", "123123");
-        bank.createAccount("1", "64220039", 500);
+        bank.createAccount("TR01", "64220039", 5000);
 
         bank.createUser("64220068", "Hassan Ghezzaoui", "hassan.ghezzaoui@gmail.com", "53215321");
-        //bank.createAccount("2", "64220068", 300);
+        bank.createAccount("TR02", "64220068", 3000);
+
+        bank.createUser("64220140", "KaramAbuShawish", "karam.abushawish@yahoo.com", "993366");
+        bank.createAccount("TR03", "64220140", 2500);
+
+        bank.createUser("62220097", "Ahmad Omar Raad", "omar.raad@outlook.com", "770199");
+
+        bank.createUser("62220056", "Rashad Mimi", "rashad.mimi@hotmail.com", "66566566");
 
         while(true){
             try{
