@@ -46,4 +46,9 @@ public class User{
     public boolean authenticate(String password){
         return this.password.equals(password);
     }
+
+    @Override
+    public String toString(){
+        return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password + "]";
+    }
 }

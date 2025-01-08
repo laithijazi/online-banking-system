@@ -78,6 +78,10 @@ public class mainProgram{
                                     double InitialBalance = in.nextDouble();
                                     in.nextLine();
                                     bank.createAccount(newAccountNumber, userId, InitialBalance);
+                                
+                                case 3:
+                                    bank.viewUsers(loggedInUser.getUserId());
+                                    break;
                             
                                 default:
                                     System.out.println("Invalid option.");
