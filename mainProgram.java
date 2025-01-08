@@ -43,13 +43,16 @@ public class mainProgram{
                             System.out.println("Admin Menu");
                             System.out.println("1. Create User");
                             System.out.println("2. Create Account");
-                            System.out.println("3. Logout");
+                            System.out.println("3. View Users");
+                            System.out.println("4. View Accounts");
+                            System.out.println("5. View Users Accounts");
+                            System.out.println("6. Logout");
                             System.out.println("Choose an option: ");
 
                             int adminChoice = in.nextInt();
                             in.nextLine();
 
-                            if(adminChoice == 3){
+                            if(adminChoice == 6){
                                 System.out.println("Logged out successfully!");
                                 break;
                             }
