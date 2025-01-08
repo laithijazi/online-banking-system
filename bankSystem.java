@@ -78,4 +78,11 @@ public class bankSystem{
             System.out.println("Account: " + account);
         }
     }
+
+    public void viewAllTrasnactions(){
+        for(Account account : accounts.values()){
+            account.viewTransactions();
+            System.out.println();
+        }
+    }
 }

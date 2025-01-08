@@ -46,13 +46,14 @@ public class mainProgram{
                             System.out.println("3. View Users");
                             System.out.println("4. View Accounts");
                             System.out.println("5. View Users Accounts");
-                            System.out.println("6. Logout");
+                            System.out.println("6. View All Transactions");
+                            System.out.println("7. Logout");
                             System.out.println("Choose an option: ");
 
                             int adminChoice = in.nextInt();
                             in.nextLine();
 
-                            if(adminChoice == 6){
+                            if(adminChoice == 7){
                                 System.out.println("Logged out successfully!");
                                 break;
                             }
@@ -89,6 +90,10 @@ public class mainProgram{
                                 
                                 case 5:
                                     bank.viewUsersAccounts();
+                                    break;
+
+                                case 6:
+                                    bank.viewAllTrasnactions();
                                     break;
                             
                                 default:
