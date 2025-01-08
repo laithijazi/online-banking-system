@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Account{
     private String accountNumber;
     private String userId;
@@ -83,6 +88,26 @@ public class Account{
             senderTransaction.logTransaction();
             Transaction recepientTransaction = new Transaction("Transfer", transferAmount, recepientAccountNumber);
             recepientTransaction.logTransaction();
+        }
+    }
+
+    public void viewTransactions(){
+        try{
+            File file = new File("transactions_" + getAccountNumber() + ".txt");
+            if(file.exists()){
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String line;
+                while((line = reader.readLine()) != null){
+                    System.out.println(line);
+                }
+                reader.close();
+            }
+            else{
+                System.out.println("No transactions found");
+            }
+        }
+        catch(IOException e){
+            System.out.println("Error in reading trasanctions file: " + e.getMessage());
         }
     }
 }
