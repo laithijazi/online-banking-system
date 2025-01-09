@@ -133,7 +133,7 @@ public class mainProgram{
                 
                     case 7:
                         System.out.println("Logged out successfully!");
-                        break;
+                        return;
             
                     default:
                         System.out.println("Invalid option.");
@@ -203,7 +203,7 @@ public class mainProgram{
                 
                     case 6:
                         System.out.println("Logged out successfully!");
-                        break;
+                        return;
 
                     default:
                         System.out.println("Invalid option.");
