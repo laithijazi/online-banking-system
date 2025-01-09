@@ -13,7 +13,7 @@ public class mainProgram{
         bank.createUser("64220068", "Hassan Ghezzaoui", "hassan.ghezzaoui@gmail.com", "53215321");
         bank.createAccount("TR02", "64220068", 3000);
 
-        bank.createUser("64220140", "KaramAbuShawish", "karam.abushawish@yahoo.com", "993366");
+        bank.createUser("64220140", "Karam AbuShawish", "karam.abushawish@yahoo.com", "993366");
         bank.createAccount("TR03", "64220140", 2500);
 
         bank.createUser("62220097", "Ahmad Omar Raad", "omar.raad@outlook.com", "770199");
@@ -143,6 +143,7 @@ public class mainProgram{
             catch(InputMismatchException e){
                 System.out.println("Invalid input.");
                 System.out.println("Please enter a valid number.");
+                in.nextLine();
             }
         }
     }
@@ -212,6 +213,7 @@ public class mainProgram{
             catch(InputMismatchException e){
                 System.out.println("Invalid input.");
                 System.out.println("Please enter a valid number.");
+                in.nextLine();
             }
         }
     }
